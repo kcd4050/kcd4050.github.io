@@ -1,0 +1,207 @@
+/* --- GLOBAL STYLES --- */
+body {
+  background-color: #0d0e1b;
+  min-height: 100vh;
+  padding: 20px;
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-wrapper {
+  position: relative;
+  max-width: 95vw;
+}
+
+/* --- GRID LAYOUT --- */
+.grid-container {
+  display: grid;
+  grid-template-columns: 15vw 32vw 32vw 15vw;
+  grid-template-rows: 40vh 40vh;
+  gap: 15px;
+  width: 95vw;
+  height: 85vh;
+  margin: auto;
+}
+
+/* --- BOX BASE STYLING --- */
+.box {
+  background: #191a32;
+  border-radius: 20px;
+  border: 1px solid rgba(133, 143, 255, 0.2);
+  transition: all 0.3s ease;
+  padding: 20px;
+  overflow: hidden;
+}
+.box:hover {
+  background: #252642;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(100, 100, 255, 0.15);
+}
+.box-title {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.box-text {
+  color: #a0a0c0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* --- GRID POSITIONS --- */
+.item-1 { grid-column: 1; grid-row: 1; }
+.item-2 { grid-column: 2 / 4; grid-row: 1; }
+.item-3 { grid-column: 4; grid-row: 1; }
+.item-4 { grid-column: 1 / 3; grid-row: 2; }
+.item-5 { grid-column: 3 / 5; grid-row: 2; }
+
+/* --- PERSONAL INFO --- */
+.personal-box {
+  text-align: center;
+}
+.profile-photo {
+  width: 100%;
+  max-width: 250px;
+  height: 180px;
+  border-radius: 15px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+.name {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+.title {
+  font-size: 0.95rem;
+  color: #9fa0ff;
+  margin-bottom: 10px;
+}
+.intro {
+  font-size: 0.85rem;
+  color: #b0b0c0;
+}
+
+/* --- ABOUT ME & SKILLS --- */
+.about-box .sub-title {
+  font-size: 1.1rem;
+  color: #9fa0ff;
+  margin-top: 10px;
+}
+.skills-list {
+  list-style: none;
+  padding: 0;
+}
+.skills-list li {
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+}
+
+/* --- CONTACT BOX --- */
+.contact-list {
+  list-style: none;
+  padding: 0;
+  font-size: 0.9rem;
+}
+.contact-list li a {
+  color: #9fa0ff;
+  text-decoration: none;
+}
+.socials {
+  margin-top: 15px;
+}
+.socials a {
+  color: #9fa0ff;
+  font-size: 1.5rem;
+  margin-right: 12px;
+  transition: 0.3s;
+}
+.socials a:hover {
+  color: #fff;
+}
+
+/* --- PROJECTS BOX (Clickable Buttons) --- */
+.projects-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.project-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  background: #252642;
+  border: 1px solid rgba(133, 143, 255, 0.2);
+  border-radius: 15px;
+  overflow: hidden;
+  width: 45%;
+  min-width: 220px;
+  height: 300px; /* fixed height */
+  transition: all 0.3s ease;
+}
+
+.project-btn img {
+  width: 100%;
+  height: 200px; /* fixed image height */
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.project-btn span {
+  display: block;
+  padding: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #e0e0e0;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.project-btn:hover {
+  background: #2d2e4f;
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(100, 100, 255, 0.2);
+}
+
+/* --- EDUCATION / EXPERIENCE --- */
+.edu-list,
+.exp-list {
+  list-style: none;
+  padding: 0;
+  font-size: 0.9rem;
+}
+.sub-title {
+  color: #9fa0ff;
+  margin-top: 10px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    height: auto;
+  }
+  .item-1 { grid-column: 1 / 3; grid-row: 1; }
+  .item-2 { grid-column: 1 / 3; grid-row: 2; }
+  .item-3 { grid-column: 1 / 3; grid-row: 3; }
+  .item-4 { grid-column: 1; grid-row: 4; }
+  .item-5 { grid-column: 2; grid-row: 4; }
+}
+
+@media (max-width: 576px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .item-1, .item-2, .item-3, .item-4, .item-5 {
+    grid-column: 1;
+    height: auto;
+  }
+}
