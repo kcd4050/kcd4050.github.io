@@ -18,16 +18,13 @@
   <body>
     <div class="grid-wrapper">
       <div class="grid-container">
-        <!-- Personal Info -->
         <div class="box item-1 personal-box">
           <img src="profile.jpg" alt="Profile" class="profile-photo" />
           <h2 class="name">Ken Cedrick Gonzales</h2>
           <p class="title">IT Student | Future Web Designer</p>
-          <p class="intro">
-            Passionate about a lot of stuff i guess.
+          <p class="intro">Passionate about a lot of stuff i guess.</p>
         </div>
 
-        <!-- About Me & Skills -->
         <div class="box item-2 about-box">
           <h3 class="box-title">About Me</h3>
           <p class="box-text">
@@ -44,7 +41,6 @@
           </ul>
         </div>
 
-        <!-- Contact Info -->
         <div class="box item-3 contact-box">
           <h3 class="box-title">Contact Me</h3>
           <p class="box-text">Feel free to reach out anytime.</p>
@@ -69,30 +65,13 @@
           </div>
         </div>
 
-        <!-- Projects -->
         <div class="box item-4 projects-box">
           <h3 class="box-title">Projects</h3>
-          <div class="projects-grid">
-            <a
-              href="https://kcd4050.github.io/moza-fsr2-wheel-website/"
-              target="_blank"
-              class="project-btn"
-            >
-              <img src="project1.jpg" alt="Project 1" />
-              <span>Hardware Demo Page</span>
-            </a>
-            <a
-              href="https://kcd4050.github.io/place-to-visit/"
-              target="_blank"
-              class="project-btn"
-            >
-              <img src="project1.jpg" alt="Project 2" />
-              <span>Chosen Place to Visit Website</span>
-            </a>
-          </div>
+          <button class="view-projects-btn" onclick="openModal()">
+            View All Projects <i class="bi bi-grid-3x3-gap-fill"></i>
+          </button>
         </div>
 
-        <!-- Education / Experience -->
         <div class="box item-5 education-box">
           <h3 class="box-title">Education</h3>
           <ul class="edu-list">
@@ -110,6 +89,77 @@
         </div>
       </div>
     </div>
+
+    <div id="projectsModal" class="modal-overlay" onclick="closeModal()">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <h2 class="modal-title">My Projects</h2>
+        <div class="projects-list" id="projectsList"></div>
+      </div>
+    </div>
+
+    <script>
+      const projects = [
+        {
+          name: "Hardware Demo Page",
+          description:
+            "A comprehensive demonstration website showcasing the MOZA FSR2 racing wheel with detailed specifications.",
+          image: "project1.jpg",
+          url: "https://kcd4050.github.io/moza-fsr2-wheel-website/",
+        },
+        {
+          name: "Chosen Place to Visit Website",
+          description:
+            "A travel focused website highlighting beautiful destinations and tourist spots around the world.",
+          image: "project1.jpg",
+          url: "https://kcd4050.github.io/place-to-visit/",
+        },
+        {
+          name: "The Book of Dragons Website",
+          description:
+            "An immersive website dedicated to dragon lore and mythology on the how to train your dragon movies.",
+          image: "project1.jpg",
+          url: "https://kcd4050.github.io/the-book-of-dragons/",
+        },
+      ];
+
+      function loadProjects() {
+        const projectsList = document.getElementById("projectsList");
+        projectsList.innerHTML = "";
+
+        projects.forEach((project) => {
+          const card = document.createElement("a");
+          card.href = project.url;
+          card.target = "_blank";
+          card.className = "project-card";
+
+          card.innerHTML = `
+            <img src="${project.image}" alt="${project.name}">
+            <div class="project-info">
+              <div class="project-name">${project.name}</div>
+              <div class="project-description">${project.description}</div>
+            </div>
+          `;
+
+          projectsList.appendChild(card);
+        });
+      }
+
+      function openModal() {
+        loadProjects();
+        document.getElementById("projectsModal").classList.add("active");
+      }
+
+      function closeModal() {
+        document.getElementById("projectsModal").classList.remove("active");
+      }
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeModal();
+        }
+      });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
