@@ -513,8 +513,14 @@ body {
     font-size: 1.3rem;
   }
 
+  .modal {
+    padding: 1rem;
+  }
+
   .modal-content {
-    padding: 2rem;
+    padding: 1.5rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
   }
 
   .projects-grid {
